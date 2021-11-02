@@ -80,7 +80,7 @@ exports.updateUserData = catchAsync(async (req, res, next) => {
   });
 });
 exports.alerts = catchAsync(async (req, res, next) => {
-  const { alert } = req.qurey;
+  const { alert } = req.query;
   if (alert === 'booking')
     res.locals.alert =
       'Your Booking Was Successful Pleas chekc out Your email for confirmation. if Your Booking doesn"t show up immediately, please come back later.';
