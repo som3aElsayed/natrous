@@ -56,7 +56,7 @@ exports.createBookingCheckout = catchAsync(async session => {
   await Booking.create({ tour, user, price });
 });
 exports.webhookCheckOut = async (req, res, next) => {
-  const signture = req.headres['stripe-signature'];
+  const signture = req.headers['stripe-signature'];
   let event;
   try {
     event = stripe.webhooks.constructEvent(
@@ -67,6 +67,7 @@ exports.webhookCheckOut = async (req, res, next) => {
   } catch (error) {
     return res.status(400).send(`Webhook Error ${err.message}`);
   }
+  console.log('event', event);
   if (event.type === 'checkout.session.completed')
     createBookingCheckout(event.data.object);
   res.status(200).json({ recived: true });
