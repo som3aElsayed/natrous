@@ -1,10 +1,10 @@
 const nodemailer = require('nodemailer');
 const pug = require('pug');
-const htmlToText = require('html-to-text');
+const { htmlToText } = require('html-to-text');
 
 module.exports = class Email {
   constructor(user, url) {
-    this.to = 'som3aa1616@gmail.com';
+    this.to = this.user.email;
     this.firstName = user.name.split(' ')[0];
     this.url = url;
     this.from = `som3a Elsayed <${process.env.EMAIL_FROM}>`;

@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const app = express();
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -17,7 +18,6 @@ const reviewRouter = require('./routes/reviewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const { webhookCheckOut } = require('./controllers/bookingController');
 const viewRouter = require('./routes/viewRoutes');
-const app = express();
 
 app.enable('trust proxy');
 
