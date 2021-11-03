@@ -1,10 +1,9 @@
 const nodemailer = require('nodemailer');
 const pug = require('pug');
-const { htmlToText } = require('html-to-text');
 
 module.exports = class Email {
   constructor(user, url) {
-    this.to = this.user.email;
+    this.to = user.email;
     this.firstName = user.name.split(' ')[0];
     this.url = url;
     this.from = `som3a Elsayed <${process.env.EMAIL_FROM}>`;
@@ -46,7 +45,7 @@ module.exports = class Email {
       to: this.to,
       subject,
       html,
-      text: htmlToText.fromString(html)
+      text: 'it is comiing from som3a &&'
     };
 
     // 3) Create a transport and send email
